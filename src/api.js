@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const BASE_URL = 'https://manoj1.pythonanywhere.com/api';  // Replace with your PyAnywhere domain
+const BASE_URL = 'https://vishwa278.pythonanywhere.com/api';  // Replace with your PyAnywhere domain
 
 // Create axios instance with base configuration
 const api = axios.create({

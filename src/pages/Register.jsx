@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
 	const [formData, setFormData] = useState({
 		username: "",
 		email: "",
-		password: "", // Changed from password1 to password
+		password: "",
 		password2: "",
 		role: "",
 	});
+
+	const navigate = useNavigate(); // Initialize the navigate function
 
 	const handleChange = (e) => {
 		setFormData({
@@ -30,9 +33,14 @@ export default function Register() {
 		setIsLoading(true);
 
 		try {
-			const response = await axios.post("http://manoj1.pythonanywhere.com/api/register/", formData);
+			const response = await axios.post("https://vishwa2708.pythonanywhere.com/api/register/", formData);
 			console.log("Success!", response.data);
 			setSuccessMessage("Registration Successful!");
+
+			// Redirect to login page after a successful registration
+			setTimeout(() => {
+				navigate("/login"); // Navigate to the login page
+			}, 1000); // Delay of 1 second to show the success message before redirecting
 		} catch (error) {
 			console.log("Error during registration!", error.response?.data);
 			if (error.response && error.response.data) {
@@ -74,12 +82,12 @@ export default function Register() {
 				></input>
 				<br />
 				<br />
-				<label>password:</label> {/* Updated field name */}
+				<label>password:</label>
 				<br />
 				<input
 					type="password"
 					name="password"
-					value={formData.password} // Changed from password1 to password
+					value={formData.password}
 					onChange={handleChange}
 				></input>
 				<br />
