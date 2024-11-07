@@ -26,7 +26,7 @@ const handleSubmit = async (e) => {
       setIsLoading(true);
 
       try{
-          const response = await axios.post("http://127.0.0.1:8000/api/login/", formData)
+          const response = await axios.post("http://manoj1.pythonanywhere.com/api/login/", formData)
           console.log("Success!", response.data)
           setSuccessMessage("Login Successful!")
           localStorage.setItem("accessToken", response.data.tokens.access);
